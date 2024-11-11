@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Maximize2, Mountain, Users2, ArrowLeftCircle, ArrowRightCircle } from "lucide-react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Button, Dialog, DialogContent, DialogTitle } from '@mui/material';
+import SignUpForm from "../pages/SignUpForm";
 
 export default function Room() {
     const rooms = [
@@ -107,11 +109,19 @@ export default function Room() {
         return dates;
     };
 
+    // const handleBooking = () => {
+    //     alert(`You have booked from ${selectedDates[0].toLocaleDateString()} to ${selectedDates[selectedDates.length - 1].toLocaleDateString()}`);
+    //     setIsCalendarOpen(false); // Close calendar after booking
+    // };
+    const [open, setOpen] = useState(false);
+    
     const handleBooking = () => {
-        alert(`You have booked from ${selectedDates[0].toLocaleDateString()} to ${selectedDates[selectedDates.length - 1].toLocaleDateString()}`);
-        setIsCalendarOpen(false); // Close calendar after booking
+        setOpen(true);
+      };
+    // Function to close the modal
+    const handleClose = () => {
+      setOpen(false);
     };
-
     return (
         <section className="py-12 md:py-24">
             <div className="max-w-screen-xl mx-auto px-4 md:px-6">
@@ -232,7 +242,22 @@ export default function Room() {
                                         highlightDates={selectedDates}
                                     />
                                     <div className="mt-4">
-                                        <button
+                                    <Button
+        onClick={handleBooking}
+        variant="contained"
+        color="success"
+        style={{ backgroundColor: '#4caf50', color: '#fff' }}
+      >
+        Confirm Booking
+      </Button>
+
+      <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
+        <DialogTitle>Sign Up</DialogTitle>
+        <DialogContent>
+          <SignUpForm />
+        </DialogContent>
+      </Dialog>
+                                        {/* <button
                                             onClick={handleBooking}
                                             className="bg-green-500 text-white rounded-md py-2 px-4"
                                         >
@@ -243,7 +268,7 @@ export default function Room() {
                                             className="ml-4 bg-gray-500 text-white rounded-md py-2 px-4"
                                         >
                                             Cancel
-                                        </button>
+                                        </button> */}
                                     </div>
                                 </div>
                             </div>
