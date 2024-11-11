@@ -10,6 +10,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Button, Dialog, DialogContent, DialogTitle } from '@mui/material';
 import SignUpForm from "../pages/SignUpForm";
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 
 export default function Room() {
   const rooms = [
@@ -115,9 +116,17 @@ export default function Room() {
         return dates;
     };
 
+    // const handleBooking = () => {
+    //     alert(`You have booked from ${selectedDates[0].toLocaleDateString()} to ${selectedDates[selectedDates.length - 1].toLocaleDateString()}`);
+    //     setIsCalendarOpen(false); // Close calendar after booking
+    // };
+
+    const [open, setOpen] = useState(false);
     const handleBooking = () => {
-        alert(`You have booked from ${selectedDates[0].toLocaleDateString()} to ${selectedDates[selectedDates.length - 1].toLocaleDateString()}`);
-        setIsCalendarOpen(false); // Close calendar after booking
+      setOpen(true);
+    };
+    const handleClose = () => {
+      setOpen(false);
     };
 
     return (
@@ -185,15 +194,24 @@ export default function Room() {
                             <h3 className="text-2xl font-bold">
                                 {rooms[currentRoomIndex].name}
                             </h3>
-                            <button
+                            <Button
                                 onClick={closeModal}
-                                className="text-gray-500 hover:text-gray-700"
+                                variant="contained"
+                                startIcon={<ArrowLeftIcon />}
+                                sx={{
+                                    backgroundColor: '#ff6666', // Light red color for the default state
+                                    '&:hover': {
+                                    backgroundColor: '#d32f2f', // Darker red on hover
+                                    },
+                                }}
                             >
-                                <ArrowLeftCircle className="w-6 h-6" />
-                            </button>
+                                Exit
+                            </Button>
+
                         </div>
                         <div className="flex justify-between mt-4">
-                            <button onClick={prevImage} className="text-blue-500">
+                            <button onClick={prevImage} className="text-blue-500" style={{marginRight:'20px'}}
+                            >
                                 <ArrowLeftCircle className="w-6 h-6" />
                             </button>
                             <img
@@ -201,7 +219,7 @@ export default function Room() {
                                 alt="Room"
                                 className="w-full h-64 object-cover"
                             />
-                            <button onClick={nextImage} className="text-blue-500">
+                            <button onClick={nextImage} className="text-blue-500" style={{marginLeft:'20px'}}>
                                 <ArrowRightCircle className="w-6 h-6" />
                             </button>
                         </div>
@@ -240,18 +258,28 @@ export default function Room() {
                                         highlightDates={selectedDates}
                                     />
                                     <div className="mt-4">
-                                        <button
+                                        <Button
                                             onClick={handleBooking}
-                                            className="bg-green-500 text-white rounded-md py-2 px-4"
+                                            variant="contained"
+                                            color="success"
+                                            style={{ backgroundColor: '#4caf50', color: '#fff' }}
                                         >
                                             Confirm Booking
-                                        </button>
-                                        <button
-                                            onClick={() => setIsCalendarOpen(false)}
-                                            className="ml-4 bg-gray-500 text-white rounded-md py-2 px-4"
+                                        </Button>
+                                        <Button
+                                            onClick={closeModal}
+                                            variant="contained"
+                                            style={{ backgroundColor: '#f55454', color: '#fff', marginLeft: '40%'}}
                                         >
                                             Cancel
-                                        </button>
+                                        </Button>
+
+                                        <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
+                                            <DialogTitle></DialogTitle>
+                                            <DialogContent>
+                                            <SignUpForm />
+                                            </DialogContent>
+                                        </Dialog>
                                     </div>
                                 </div>
                             </div>
