@@ -5,16 +5,16 @@ import Footer from "../components/Footer";
 import Banner from "../components/Banner";
 
 const Home = () => {
-    return (
-        <div>
-            <Navbar />
-            <main>
-                <Banner/>
-                <Rooms />
-            </main>
-            <Footer />
-        </div>
-    );
+  return (
+    <div>
+      <Navbar />
+      <main>
+        <Banner />
+        <Rooms />
+      </main>
+      <Footer />
+    </div>
+  );
 };
 
 export default Home;
