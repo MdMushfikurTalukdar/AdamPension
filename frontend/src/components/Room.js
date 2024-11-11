@@ -31,6 +31,19 @@ export default function Room() {
             price: "450",
             href: "#",
         },
+        {
+            name: "Room1",
+            images: [
+                "https://imgs.search.brave.com/sZcksN_MDKyuhXMLpstBqSUOrucaNKuEMMxYkkXEiLs/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuY3RmYXNzZXRz/Lm5ldC9ocmx0eDEy/cGw4aHEvMXdnMVNj/bXlkZ2Y3b3poWmtN/YmxYYS84YjA4OGZj/YTRkYTAxYTk2NDM0/NzkzZDNlNTI4NzVk/ZC9UZWFtd29ya19U/aHVtYm5haWwuanBn",
+                "https://imgs.search.brave.com/m3DI64jMJUH-Z-RmuiGTyoJdatyVhlELrzZYlzkPJg8/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9kZWVw/YWkub3JnL3N0YXRp/Yy9pbWFnZXMvZG9s/cGhpbjEuc3Zn",
+                "https://imgs.search.brave.com/x_rFDF8ZfdPz_ICvGjGYjzQkixSDbAaqZRn5_AQYR00/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9i/L2I2L0ltYWdlX2Ny/ZWF0ZWRfd2l0aF9h/X21vYmlsZV9waG9u/ZS5wbmc"
+            ],
+            capacity: "2 Adults",
+            size: "35sqm",
+            view: "City",
+            price: "450",
+            href: "#",
+        },
         // Other rooms...
     ];
 
