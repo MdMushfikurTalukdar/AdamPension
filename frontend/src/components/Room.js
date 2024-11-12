@@ -17,9 +17,21 @@ export default function Room() {
     {
       name: "Double Bed Room",
       images: [
-        "https://imgs.search.brave.com/9Pt7Mku9h0o0JJJXT7_oxUSc06oDeyTCiluYlqYzSR8/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZWpvdXJuYWwub3Jn/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDI0/LzEwL0lzc3VlLTEy/Mi1TaGVyaWRhbl9Q/YWdlXzA4Ml9JbWFn/ZV8wMDAxLmpwZw",
-        "https://imgs.search.brave.com/ysl3BAu3tXRmj_IPXG9wXfbOYTbztnXJC7YUsyanM_w/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZWpvdXJuYWwub3Jn/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDI0/LzEwL0lzc3VlLTEy/Mi1TaGVyaWRhbl9Q/YWdlXzA4NV9JbWFn/ZV8wMDAxLXNjYWxl/ZC5qcGc",
-        "https://imgs.search.brave.com/-PXFoEjc4e3-PFfUjoiM5dYo__7bPF8dtv4cEu4VTRs/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNS8w/Ny8wNS8xMC8xOC90/cmVlLTgzMjA3OV82/NDAuanBn",
+        "https://i.ibb.co.com/423pxtz/IMG-20241112-WA0013.jpg",
+        "https://i.ibb.co.com/Y8QSQgJ/IMG-20241112-WA0007.jpg",
+        "https://i.ibb.co.com/DQ3DRhy/IMG-20241112-WA0010.jpg",
+        "https://i.ibb.co.com/PjGrNBy/IMG-20241112-WA0012.jpg",
+        "https://i.ibb.co.com/QJTH5YP/IMG-20241112-WA0014.jpg",
+        "https://i.ibb.co.com/tJKjmxR/IMG-20241112-WA0015.jpg",
+        "https://i.ibb.co.com/9wWTdDB/IMG-20241112-WA0016.jpg",
+        "https://i.ibb.co.com/r3XLp3K/IMG-20241112-WA0017.jpg",
+        "https://i.ibb.co.com/RTfqzff/IMG-20241112-WA0018.jpg",
+        "https://i.ibb.co.com/5xXKV32/IMG-20241112-WA0019.jpg",
+        "https://i.ibb.co.com/djyC4Vp/IMG-20241112-WA0020.jpg",
+        "https://i.ibb.co.com/WnMbD5d/IMG-20241112-WA0021.jpg",
+        "https://i.ibb.co.com/5TbnWj9/IMG-20241112-WA0022.jpg",
+        "https://i.ibb.co.com/GFzYjLz/IMG-20241112-WA0024.jpg",
+        "https://i.ibb.co.com/P9PqbS1/IMG-20241112-WA0025.jpg",
       ],
       capacity: "2 Adults",
       size: "20sqm",
@@ -30,9 +42,21 @@ export default function Room() {
     {
       name: "Double Bed Room",
       images: [
-        "https://imgs.search.brave.com/sZcksN_MDKyuhXMLpstBqSUOrucaNKuEMMxYkkXEiLs/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuY3RmYXNzZXRz/Lm5ldC9ocmx0eDEy/cGw4aHEvMXdnMVNj/bXlkZ2Y3b3poWmtN/YmxYYS84YjA4OGZj/YTRkYTAxYTk2NDM0/NzkzZDNlNTI4NzVk/ZC9UZWFtd29ya19U/aHVtYm5haWwuanBn",
-        "https://imgs.search.brave.com/m3DI64jMJUH-Z-RmuiGTyoJdatyVhlELrzZYlzkPJg8/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9kZWVw/YWkub3JnL3N0YXRp/Yy9pbWFnZXMvZG9s/cGhpbjEuc3Zn",
-        "https://imgs.search.brave.com/x_rFDF8ZfdPz_ICvGjGYjzQkixSDbAaqZRn5_AQYR00/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9i/L2I2L0ltYWdlX2Ny/ZWF0ZWRfd2l0aF9h/X21vYmlsZV9waG9u/ZS5wbmc",
+        "https://i.ibb.co.com/DQ3DRhy/IMG-20241112-WA0010.jpg",
+        "https://i.ibb.co.com/423pxtz/IMG-20241112-WA0013.jpg",
+        "https://i.ibb.co.com/Y8QSQgJ/IMG-20241112-WA0007.jpg",
+        "https://i.ibb.co.com/PjGrNBy/IMG-20241112-WA0012.jpg",
+        "https://i.ibb.co.com/QJTH5YP/IMG-20241112-WA0014.jpg",
+        "https://i.ibb.co.com/tJKjmxR/IMG-20241112-WA0015.jpg",
+        "https://i.ibb.co.com/9wWTdDB/IMG-20241112-WA0016.jpg",
+        "https://i.ibb.co.com/r3XLp3K/IMG-20241112-WA0017.jpg",
+        "https://i.ibb.co.com/RTfqzff/IMG-20241112-WA0018.jpg",
+        "https://i.ibb.co.com/5xXKV32/IMG-20241112-WA0019.jpg",
+        "https://i.ibb.co.com/djyC4Vp/IMG-20241112-WA0020.jpg",
+        "https://i.ibb.co.com/WnMbD5d/IMG-20241112-WA0021.jpg",
+        "https://i.ibb.co.com/5TbnWj9/IMG-20241112-WA0022.jpg",
+        "https://i.ibb.co.com/GFzYjLz/IMG-20241112-WA0024.jpg",
+        "https://i.ibb.co.com/P9PqbS1/IMG-20241112-WA0025.jpg",
       ],
       capacity: "2 Adults",
       size: "20sqm",
@@ -43,9 +67,13 @@ export default function Room() {
     {
       name: "Single Bed Room",
       images: [
-        "https://imgs.search.brave.com/sZcksN_MDKyuhXMLpstBqSUOrucaNKuEMMxYkkXEiLs/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuY3RmYXNzZXRz/Lm5ldC9ocmx0eDEy/cGw4aHEvMXdnMVNj/bXlkZ2Y3b3poWmtN/YmxYYS84YjA4OGZj/YTRkYTAxYTk2NDM0/NzkzZDNlNTI4NzVk/ZC9UZWFtd29ya19U/aHVtYm5haWwuanBn",
-        "https://imgs.search.brave.com/m3DI64jMJUH-Z-RmuiGTyoJdatyVhlELrzZYlzkPJg8/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9kZWVw/YWkub3JnL3N0YXRp/Yy9pbWFnZXMvZG9s/cGhpbjEuc3Zn",
-        "https://imgs.search.brave.com/x_rFDF8ZfdPz_ICvGjGYjzQkixSDbAaqZRn5_AQYR00/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9i/L2I2L0ltYWdlX2Ny/ZWF0ZWRfd2l0aF9h/X21vYmlsZV9waG9u/ZS5wbmc",
+        "https://i.ibb.co.com/L8tdzk7/IMG-20241112-WA0033.jpg",
+        "https://i.ibb.co.com/FV3W9ZY/IMG-20241112-WA0026.jpg",
+        "https://i.ibb.co.com/25X1SQC/IMG-20241112-WA0023.jpg",
+        "https://i.ibb.co.com/5r5WVWz/IMG-20241112-WA0027.jpg",
+        "https://i.ibb.co.com/2StPZx0/IMG-20241112-WA0028.jpg",
+        "https://i.ibb.co.com/bbWZxmL/IMG-20241112-WA0029.jpg",
+        "https://i.ibb.co.com/FDdY2vg/IMG-20241112-WA0030.jpg",
       ],
       capacity: "1 Adults",
       size: "15sqm",
@@ -172,7 +200,7 @@ export default function Room() {
                                     </div>
                                 </div>
                                 <div className="flex items-center justify-between pt-4 border-t">
-                                    <div className="font-bold">${room.price} / Night</div>
+                                    <div className="font-bold">€ {room.price} / Night</div>
                                     <button
                                         onClick={() => openModal(index)}
                                         className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
@@ -214,16 +242,18 @@ export default function Room() {
                             >
                                 <ArrowLeftCircle className="w-6 h-6" />
                             </button>
-                            <img
-                                src={rooms[currentRoomIndex].images[currentImageIndex]}
-                                alt="Room"
-                                className="w-full h-64 object-cover"
-                            />
+                            <div className="w-full h-[400px] sm:h-[500px] flex items-center justify-center">
+                                <img
+                                    src={rooms[currentRoomIndex].images[currentImageIndex]}
+                                    alt="Room"
+                                    className="w-full h-full object-contain"
+                                />
+                            </div>
                             <button onClick={nextImage} className="text-blue-500" style={{marginLeft:'20px'}}>
                                 <ArrowRightCircle className="w-6 h-6" />
                             </button>
                         </div>
-                        <div className="mt-4 space-y-2">
+                        {/* <div className="mt-4 space-y-2">
                             <div className="flex items-center">
                                 <Users2 className="w-5 h-5" />
                                 <span>{rooms[currentRoomIndex].capacity}</span>
@@ -236,9 +266,9 @@ export default function Room() {
                                 <Mountain className="w-5 h-5" />
                                 <span>{rooms[currentRoomIndex].view}</span>
                             </div>
-                        </div>
+                        </div> */}
                         <div className="flex justify-between items-center mt-6">
-                            <div className="font-bold">${rooms[currentRoomIndex].price} / Night</div>
+                            <div className="font-bold">€ {rooms[currentRoomIndex].price} / Night</div>
                             <button
                                 onClick={() => setIsCalendarOpen(true)}
                                 className="bg-blue-500 text-white rounded-md py-2 px-4"
