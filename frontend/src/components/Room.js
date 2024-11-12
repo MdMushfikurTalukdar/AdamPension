@@ -170,9 +170,12 @@ export default function Room() {
                         ornare, neque leo dapibus ante, nec dignissim.
                     </p>
                 </div>
+                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
                     {rooms.map((room, index) => (
                         <div
+                        onClick={() => openModal(index)} 
                             key={room.name}
                             className="flex flex-col bg-white rounded-lg overflow-hidden border"
                         >
@@ -212,6 +215,8 @@ export default function Room() {
                         </div>
                     ))}
                 </div>
+
+
             </div>
 
             {/* Modal */}
@@ -240,7 +245,7 @@ export default function Room() {
                         <div className="flex justify-between mt-4">
                             <button onClick={prevImage} className="text-blue-500" style={{marginRight:'20px'}}
                             >
-                                <ArrowLeftCircle className="w-6 h-6" />
+                                <ArrowLeftCircle className="w-12 h-12" />
                             </button>
                             <div className="w-full h-[400px] sm:h-[500px] flex items-center justify-center">
                                 <img
@@ -250,7 +255,7 @@ export default function Room() {
                                 />
                             </div>
                             <button onClick={nextImage} className="text-blue-500" style={{marginLeft:'20px'}}>
-                                <ArrowRightCircle className="w-6 h-6" />
+                                <ArrowRightCircle className="w-12 h-12" />
                             </button>
                         </div>
                         {/* <div className="mt-4 space-y-2">
@@ -299,7 +304,7 @@ export default function Room() {
                                         <Button
                                             onClick={closeModal}
                                             variant="contained"
-                                            style={{ backgroundColor: '#f55454', color: '#fff', marginLeft: '40%'}}
+                                            style={{ backgroundColor: '#f55454', color: '#fff', marginLeft: '30%'}}
                                         >
                                             Cancel
                                         </Button>
