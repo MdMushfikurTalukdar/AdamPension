@@ -11,6 +11,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Button, Dialog, DialogContent, DialogTitle } from '@mui/material';
 import SignUpForm from "../pages/SignUpForm";
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
+import "./calender.css";
 
 export default function Room() {
   const rooms = [
@@ -282,9 +283,11 @@ export default function Room() {
                             </button>
                         </div>
                         {/* Calendar Popup */}
+
+
                         {isCalendarOpen && (
                             <div className="absolute top-0 left-0 right-0 bottom-0 bg-gray-500 bg-opacity-50 z-10 flex items-center justify-center">
-                                <div className="bg-white p-6 rounded-lg">
+                                <div className="bg-white p-6 rounded-lg calender">
                                     <DatePicker
                                         selected={selectedDates[0]}
                                         onChange={handleDateChange}
@@ -304,7 +307,7 @@ export default function Room() {
                                         <Button
                                             onClick={closeModal}
                                             variant="contained"
-                                            style={{ backgroundColor: '#f55454', color: '#fff', marginLeft: '30%'}}
+                                            style={{ backgroundColor: '#f55454', color: '#fff', float:'right'}}
                                         >
                                             Cancel
                                         </Button>
@@ -319,6 +322,10 @@ export default function Room() {
                                 </div>
                             </div>
                         )}
+
+
+
+                        
                     </div>
                 </div>
             )}
