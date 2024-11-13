@@ -302,7 +302,7 @@ export default function Room() {
                                             color="success"
                                             style={{ backgroundColor: '#4caf50', color: '#fff' }}
                                         >
-                                            Confirm Booking
+                                            Confirm
                                         </Button>
                                         <Button
                                             onClick={closeModal}

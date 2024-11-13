@@ -1,7 +1,7 @@
-/* DatePickerStyles.css */
+/* DatePickerStyles.css
 
 /* Additional styling for full-width DatePicker */
-.react-datepicker {
+/* .react-datepicker {
     width: 100% !important;
 }
 
@@ -31,4 +31,7 @@
 .react-datepicker__day--keyboard-selected {
     background-color: #4caf50 !important;
     color: white !important;
+}  */
+.react-datepicker__month-container {
+     float: none; 
 }
