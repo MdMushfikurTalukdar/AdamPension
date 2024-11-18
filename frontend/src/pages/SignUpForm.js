@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Grid, TextField, Button, Typography, Box } from '@mui/material';
 import axios from 'axios';
 
-const SignUpForm = ({ startDate, endDate, roomName }) => {
+const SignUpForm = ({ startDate, endDate, roomName, perDayCost}) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -10,9 +10,19 @@ const SignUpForm = ({ startDate, endDate, roomName }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  const countDays = (startDate, endDate) => {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const timeDifference = end - start;
+    const days = timeDifference / (1000 * 3600 * 24);
+    return days;
+  };
+
   const handleSubmit = async (event) => {
       event.preventDefault();
       setIsLoading(true);
+      
+      const nights = countDays(startDate, endDate);
 
       const bookingData = {
           first_name: firstName || null,
@@ -22,6 +32,8 @@ const SignUpForm = ({ startDate, endDate, roomName }) => {
           start_date: startDate.toISOString().split("T")[0],
           end_date: endDate.toISOString().split("T")[0],
           room_name: roomName,
+          night_count: nights,
+          total_cost: (nights*perDayCost) ,
       };
 
       try {

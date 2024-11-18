@@ -1,44 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
   Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper,
   Button, Typography, Box, Select, MenuItem, FormControl, InputLabel
 } from '@mui/material';
 
 const AdminPanel = () => {
-  const reservations = [
-    {
-      bookNumber: "4589154859",
-      guestName: "Miroslav Friedl",
-      checkIn: "2024-09-30",
-      checkOut: "2024-10-04",
-      roomNights: 4,
-      comm: 12,
-      result: "Stayed",
-      originalAmount: "€ 176.25",
-      finalAmount: "€ 176.25",
-      paymentCharge: "€ 2.59",
-      commissionAmount: "€ 21.15",
-      disputeAmount: false,
-      remarks: ""
-    },
-    {
-      bookNumber: "4652318647",
-      guestName: "Mayle Mayle",
-      checkIn: "2024-10-09",
-      checkOut: "2024-10-14",
-      roomNights: 5,
-      comm: 12,
-      result: "Stayed",
-      originalAmount: "€ 203.66",
-      finalAmount: "€ 203.66",
-      paymentCharge: "€ 2.99",
-      commissionAmount: "€ 24.44",
-      disputeAmount: false,
-      remarks: ""
-    },
-    // Add more reservation data here...
-  ];
-
+  const [reservations, setReservations] = useState([]);
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
 
@@ -58,6 +26,20 @@ const AdminPanel = () => {
     { value: 12, label: 'December' },
   ];
 
+  useEffect(() => {
+    const fetchReservations = async () => {
+      try {
+        const response = await axios.get('https://none2.pythonanywhere.com/api/api/bookings/all/');
+        console.log(response.data); // Check if the data structure is as expected
+        setReservations(response.data.bookings || []);  // Access the 'bookings' array
+      } catch (error) {
+        console.error("Error fetching reservations:", error);
+      }
+    };
+
+    fetchReservations();
+  }, []);
+
   const handleYearChange = (event) => {
     setSelectedYear(event.target.value);
   };
@@ -66,13 +48,19 @@ const AdminPanel = () => {
     setSelectedMonth(event.target.value);
   };
 
-  // Filter reservations based on selected year and month
+  // Filter the reservations based on selected year and month
   const filteredReservations = reservations.filter(reservation => {
-    const checkInDate = new Date(reservation.checkIn);
-    return (
-      checkInDate.getFullYear() === selectedYear &&
-      checkInDate.getMonth() + 1 === selectedMonth
-    );
+    const startDate = new Date(reservation.start_date);
+    // const endDate = new Date(reservation.end_date);
+
+    if (selectedYear && selectedMonth) {
+      return (
+        startDate.getFullYear() === selectedYear &&
+        startDate.getMonth() + 1 === selectedMonth
+      );
+    }
+
+    return true;
   });
 
   const handlePrint = () => {
@@ -80,14 +68,14 @@ const AdminPanel = () => {
   };
 
   return (
-    <Box sx={{ mt: '2%', ml: '2%', mr:'2%' }}>
+    <Box sx={{ mt: '2%', ml: '2%', mr: '2%' }}>
       <Typography variant="h5" gutterBottom>
         Reservation Statements
       </Typography>
       <Typography variant="body1">
         Here you can see all reservation details that have been included in your invoice.
       </Typography>
-      
+
       <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
         <FormControl>
           <InputLabel>Year</InputLabel>
@@ -108,10 +96,10 @@ const AdminPanel = () => {
         </FormControl>
       </Box>
 
-      {/* <Button variant="contained" sx={{ m: 1 }}>Download XLS</Button>
-      <Button variant="contained" sx={{ m: 1 }}>Download CSV</Button> */}
-      <Button variant="contained" onClick={handlePrint} sx={{ m: 1 }}>Print this page</Button>
-      
+      <Button variant="contained" onClick={handlePrint} sx={{ m: 1 }}>
+        Print this page
+      </Button>
+
       <TableContainer component={Paper} sx={{ mt: 3 }} id="printableTable">
         <Table aria-label="reservation table">
           <TableHead>
@@ -121,34 +109,18 @@ const AdminPanel = () => {
               <TableCell sx={{ fontWeight: 'bold' }}>Check-in</TableCell>
               <TableCell sx={{ fontWeight: 'bold' }}>Check-out</TableCell>
               <TableCell sx={{ fontWeight: 'bold' }}>Room Nights</TableCell>
-              <TableCell sx={{ fontWeight: 'bold' }}>Comm. %</TableCell>
-              <TableCell sx={{ fontWeight: 'bold' }}>Result</TableCell>
-              <TableCell sx={{ fontWeight: 'bold' }}>Original Amount (EUR)</TableCell>
               <TableCell sx={{ fontWeight: 'bold' }}>Final Amount (EUR)</TableCell>
-              {/* <TableCell sx={{ fontWeight: 'bold' }}>Payment Charge</TableCell>
-              <TableCell sx={{ fontWeight: 'bold' }}>Commission Amount (EUR)</TableCell>
-              <TableCell sx={{ fontWeight: 'bold' }}>Dispute Amount</TableCell>
-              <TableCell sx={{ fontWeight: 'bold' }}>Remarks</TableCell> */}
             </TableRow>
           </TableHead>
           <TableBody>
             {filteredReservations.map((reservation) => (
-              <TableRow key={reservation.bookNumber}>
-                <TableCell>{reservation.bookNumber}</TableCell>
-                <TableCell>{reservation.guestName}</TableCell>
-                <TableCell>{reservation.checkIn}</TableCell>
-                <TableCell>{reservation.checkOut}</TableCell>
-                <TableCell>{reservation.roomNights}</TableCell>
-                <TableCell>{reservation.comm}</TableCell>
-                <TableCell>{reservation.result}</TableCell>
-                <TableCell>{reservation.originalAmount}</TableCell>
-                <TableCell>{reservation.finalAmount}</TableCell>
-                {/* <TableCell>{reservation.paymentCharge}</TableCell>
-                <TableCell>{reservation.commissionAmount}</TableCell>
-                <TableCell>
-                  <Checkbox checked={reservation.disputeAmount} />
-                </TableCell>
-                <TableCell>{reservation.remarks}</TableCell> */}
+              <TableRow key={reservation.id}>
+                <TableCell>{reservation.id}</TableCell>
+                <TableCell>{`${reservation.first_name || ''} ${reservation.last_name || ''}`}</TableCell>
+                <TableCell>{reservation.start_date}</TableCell>
+                <TableCell>{reservation.end_date}</TableCell>
+                <TableCell>{reservation.night_count}</TableCell>
+                <TableCell>{reservation.total_cost}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -176,7 +148,7 @@ const AdminPanel = () => {
           }
         }
       `}</style>
-      
+
     </Box>
   );
 };

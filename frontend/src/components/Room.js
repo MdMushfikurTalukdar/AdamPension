@@ -363,7 +363,7 @@ const fetchBookedDates = async (roomName) => {
                           <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
                             {/* <DialogTitle></DialogTitle> */}
                             <DialogContent>
-                              <SignUpForm startDate={startDate} endDate={endDate} roomName={rooms[currentRoomIndex].name} />
+                              <SignUpForm startDate={startDate} endDate={endDate} roomName={rooms[currentRoomIndex].name} perDayCost={rooms[currentRoomIndex].price} />
                             </DialogContent>
                           </Dialog>  
                     </div>
