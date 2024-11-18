@@ -8,6 +8,8 @@ import {
 import Home from "./pages/Home.js";
 import Room from "./pages/RoomBook.js";
 import SignUp from "./pages/SignUpForm.js";
+import AdminPanel from "./pages/AdminPanel.js";
+import Try from "./pages/Try.js";
 
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
             <Route path="/" element={<Home/>} />
             <Route path="/room-book" element={<Room/>} />
             <Route path="/sign" element={<SignUp/>} />
+            <Route path="/admin" element={<AdminPanel/>} />
+            <Route path="/try" element={<Try/>} />
             
           </Routes>
         </Router>
@@ -27,3 +31,4 @@ function App() {
 }
 
 export default App;
+

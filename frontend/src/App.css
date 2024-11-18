@@ -41,3 +41,31 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* CSS for print */
+@media print {
+  /* Hide everything but the table container */
+  body * {
+    visibility: hidden;
+  }
+
+  #printableTable, #printableTable * {
+    visibility: visible;
+  }
+
+  #printableTable {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
+
+
+
+.booked-date {
+  background-color: red !important;
+  color: white;
+  border-radius: 50%; /* Optional: makes the highlight circular */
+}

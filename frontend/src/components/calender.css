@@ -35,3 +35,7 @@
 .react-datepicker__month-container {
      float: none; 
 }
+.react-datepicker__day--highlighted-booked {
+    background-color: red !important;
+    color: white !important;
+  }
