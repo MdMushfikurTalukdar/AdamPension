@@ -11,12 +11,10 @@ const Footer = () => {
   <div className="max-w-screen-xl mx-auto grid lg:grid-cols-3 justify-center gap-x-12 space-y-5 lg:space-y-0">
     <div className="flex flex-col gap-10 max-w-md">
       <h1 className="text-primary text-2xl font-semibold">
-        Adam’s Pension
+      Die Unterkunft
       </h1>
       <p className="leading-7 text-white text-justify -mt-5">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque at
-        tenetur nobis, consequuntur quibusdam beatae id! Recusandae aut quam
-        quas.
+      Das Zimmer befindet sich in einer ruhigen Lage in Chemnitz. Verkehrsanbindung ist sowohl mit öffentlichen Verkehrsmitteln möglich als auch schnell mit dem Auto in die Stadt. Parkmöglichkeit ist kostenlos hier und stets frei vor der Unterkunft.
       </p>
       <div className="flex gap-3 -mt-5">
         <a
@@ -91,21 +89,23 @@ const Footer = () => {
       <div className="space-y-1">
         <div className="flex items-center gap-3">
           <IoLocationSharp className="text-primary" size={20} />
-          <span className="text-[#E7E7E7]">Mirpur DOHS, Dhaka-1216</span>
+          <span className="text-[#E7E7E7]">Casparistraße 1, 09126 Chemnitz</span>
         </div>
         <div className="flex items-center gap-3">
           <IoTimeOutline className="text-primary" size={20} />
           <span className="text-[#E7E7E7]">
-            Mon - Fri: 09:00 am - 05:00 pm
+          Check-in: 24/7 
+
           </span>
         </div>
         <div className="flex items-center gap-3">
           <MdOutlineMailOutline className="text-primary" size={20} />
-          <span className="text-[#E7E7E7]">info@adams.com</span>
+          <span className="text-[#E7E7E7]">adam.david@web.de
+          </span>
         </div>
         <div className="flex items-center gap-3">
           <MdLocalPhone className="text-primary" size={20} />
-          <span className="text-[#E7E7E7]">(+88) 01318-411864</span>
+          <span className="text-[#E7E7E7]">+49 17663265933 Here .</span>
         </div>
       </div>
     </div>

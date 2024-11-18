@@ -35,8 +35,8 @@ export default function Room() {
         "https://i.ibb.co.com/GFzYjLz/IMG-20241112-WA0024.jpg",
         "https://i.ibb.co.com/P9PqbS1/IMG-20241112-WA0025.jpg",
       ],
-      capacity: "2 Adults",
-      size: "20sqm",
+      capacity: "2 Personen",
+      size: "20m²",
       view: "City",
       price: "45",
       href: "#",
@@ -60,8 +60,8 @@ export default function Room() {
         "https://i.ibb.co.com/GFzYjLz/IMG-20241112-WA0024.jpg",
         "https://i.ibb.co.com/P9PqbS1/IMG-20241112-WA0025.jpg",
       ],
-      capacity: "2 Adults",
-      size: "20sqm",
+      capacity: "2 Personen",
+      size: "20m²",
       view: "City",
       price: "45",
       href: "#",
@@ -77,8 +77,8 @@ export default function Room() {
         "https://i.ibb.co.com/bbWZxmL/IMG-20241112-WA0029.jpg",
         "https://i.ibb.co.com/FDdY2vg/IMG-20241112-WA0030.jpg",
       ],
-      capacity: "1 Adults",
-      size: "15sqm",
+      capacity: "1 Personen",
+      size: "15m²",
       view: "City",
       price: "40",
       href: "#",
@@ -167,17 +167,6 @@ const fetchBookedDates = async (roomName) => {
   const dayClassName = (date) => {
     return isBooked(date) ? "booked-date" : "";
   };
-  // const dayClassName = (date) => {
-  //   dayClassNameBooked(date);
-  //   if (startDate && endDate) {
-  //     const isBetweenDates =
-  //       date >= startDate && date <= endDate;
-  //     if (isBetweenDates) {
-  //       return "green-highlight";
-  //     }
-  //   }
-  //   return "";
-  // };
 
   const handleRoomSelection = (room) => {
     setSelectedRoom(room);
@@ -227,12 +216,10 @@ const fetchBookedDates = async (roomName) => {
             <div className="max-w-screen-xl mx-auto px-4 md:px-6">
                 <div className="flex flex-col items-center space-y-4 text-center">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                        Our Rooms
+                    Unsere Räume
                     </h2>
                     <p className="max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                        Maecenas feugiat mattis ipsum, vitae semper massa
-                        porttitor sit amet. Nulla mattis, urna et posuere
-                        ornare, neque leo dapibus ante, nec dignissim.
+                    Wählen Sie Ihr Zimmer aus je nach Bedarf.
                     </p>
                 </div>
                 
@@ -256,11 +243,11 @@ const fetchBookedDates = async (roomName) => {
                                 <div className="space-y-2">
                                     <div className="flex items-center text-gray-500">
                                         <Users2 className="h-5 w-5 mr-2" />
-                                        <span>Capacity: {room.capacity}</span>
+                                        <span>Kapazität: {room.capacity}</span>
                                     </div>
                                     <div className="flex items-center text-gray-500">
                                         <Maximize2 className="h-5 w-5 mr-2" />
-                                        <span>Size: {room.size}</span>
+                                        <span>Größe: {room.size}</span>
                                     </div>
                                     <div className="flex items-center text-gray-500">
                                         <Mountain className="h-5 w-5 mr-2" />
