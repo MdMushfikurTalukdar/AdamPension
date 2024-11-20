@@ -59,7 +59,7 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost}) => {
     if (userInput === verificationCode.toString()) {
         setFlag(true); 
         setSnackbar({ open: true, message: "Accepted!", severity: "success" });
-
+        window.location.reload();
     } 
     else {
         setSnackbar({ open: true, message: "Not Match!", severity: "error" });
