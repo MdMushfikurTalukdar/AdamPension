@@ -26,32 +26,7 @@ export default function Room() {
         "https://i.ibb.co.com/QJTH5YP/IMG-20241112-WA0014.jpg",
         "https://i.ibb.co.com/tJKjmxR/IMG-20241112-WA0015.jpg",
         "https://i.ibb.co.com/9wWTdDB/IMG-20241112-WA0016.jpg",
-        "https://i.ibb.co.com/r3XLp3K/IMG-20241112-WA0017.jpg",
-        "https://i.ibb.co.com/RTfqzff/IMG-20241112-WA0018.jpg",
-        "https://i.ibb.co.com/5xXKV32/IMG-20241112-WA0019.jpg",
-        "https://i.ibb.co.com/djyC4Vp/IMG-20241112-WA0020.jpg",
-        "https://i.ibb.co.com/WnMbD5d/IMG-20241112-WA0021.jpg",
-        "https://i.ibb.co.com/5TbnWj9/IMG-20241112-WA0022.jpg",
-        "https://i.ibb.co.com/GFzYjLz/IMG-20241112-WA0024.jpg",
-        "https://i.ibb.co.com/P9PqbS1/IMG-20241112-WA0025.jpg",
-      ],
-      capacity: "2 Personen",
-      size: "20m²",
-      view: "City",
-      price: "45",
-      href: "#",
-    },
-    {
-      name: "Double Bed Room 2",
-      images: [
-        "https://i.ibb.co.com/DQ3DRhy/IMG-20241112-WA0010.jpg",
-        "https://i.ibb.co.com/423pxtz/IMG-20241112-WA0013.jpg",
-        "https://i.ibb.co.com/Y8QSQgJ/IMG-20241112-WA0007.jpg",
-        "https://i.ibb.co.com/PjGrNBy/IMG-20241112-WA0012.jpg",
-        "https://i.ibb.co.com/QJTH5YP/IMG-20241112-WA0014.jpg",
-        "https://i.ibb.co.com/tJKjmxR/IMG-20241112-WA0015.jpg",
-        "https://i.ibb.co.com/9wWTdDB/IMG-20241112-WA0016.jpg",
-        "https://i.ibb.co.com/r3XLp3K/IMG-20241112-WA0017.jpg",
+        "https://i.ibb.co.com/gtK2R0h/Whats-App-Image-2024-11-20-at-16-26-05-7fd46322.jpg",
         "https://i.ibb.co.com/RTfqzff/IMG-20241112-WA0018.jpg",
         "https://i.ibb.co.com/5xXKV32/IMG-20241112-WA0019.jpg",
         "https://i.ibb.co.com/djyC4Vp/IMG-20241112-WA0020.jpg",
@@ -83,7 +58,17 @@ export default function Room() {
       price: "40",
       href: "#",
     },
-    // Other rooms...
+    // {
+    //   name: "Double Bed Room 2",
+    //   images: [
+    //     "https://i.ibb.co.com/DQ3DRhy/IMG-20241112-WA0010.jpg"
+    //   ],
+    //   capacity: "2 Personen",
+    //   size: "20m²",
+    //   view: "City",
+    //   price: "45",
+    //   href: "#",
+    // },
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -313,7 +298,7 @@ const fetchBookedDates = async (roomName) => {
                             <div className="font-bold">€ {rooms[currentRoomIndex].price} / Night</div>
                             <button
                                 onClick={() => handleRoomSelection(rooms[currentRoomIndex].name)}
-                                className="bg-blue-500 text-white rounded-md py-2 px-4"
+                                className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
                             >
                                 Book Now
                             </button>

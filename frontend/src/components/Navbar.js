@@ -20,16 +20,16 @@ export default function Navbar() {
 
   const menuItems = [
     { name: "Home", href: "/", icon: Home },
-    {
-      name: "Accommodation",
-      href: "/accommodation",
-      icon: Briefcase,
-      submenu: [
-        { name: "Room 1", href: "/accommodation/room-1" },
-        { name: "Room 2", href: "/accommodation/room-2" },
-        { name: "Room 3", href: "/accommodation/room-3" },
-      ],
-    },
+    // {
+    //   name: "Accommodation",
+    //   href: "/accommodation",
+    //   icon: Briefcase,
+    //   submenu: [
+    //     { name: "Room 1", href: "/accommodation/room-1" },
+    //     { name: "Room 2", href: "/accommodation/room-2" },
+    //     { name: "Room 3", href: "/accommodation/room-3" },
+    //   ],
+    // },
     { name: "About", href: "/about", icon: Info },
     { name: "Contact", href: "/contact", icon: Mail },
   ];

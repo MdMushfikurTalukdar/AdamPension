@@ -1,8 +1,8 @@
 import React from "react";
-import { FaFacebook, FaLinkedin, FaWhatsapp, FaYoutube } from "react-icons/fa";
+import { FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { IoLocationSharp, IoTimeOutline } from "react-icons/io5";
 import { MdLocalPhone, MdOutlineMailOutline } from "react-icons/md";
-import { Link } from "react-router-dom"; // Import from React Router for navigation
+
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -17,14 +17,14 @@ const Footer = () => {
       Das Zimmer befindet sich in einer ruhigen Lage in Chemnitz. Verkehrsanbindung ist sowohl mit öffentlichen Verkehrsmitteln möglich als auch schnell mit dem Auto in die Stadt. Parkmöglichkeit ist kostenlos hier und stets frei vor der Unterkunft.
       </p>
       <div className="flex gap-3 -mt-5">
-        <a
+        {/* <a
           href="https://www.linkedin.com/company/electrosys-engineering/"
           target="_blank"
           rel="noopener noreferrer"
           className="p-3 rounded-full cursor-pointer bg-white group hover:bg-primary transition-all duration-300"
         >
           <FaLinkedin className="text-black group-hover:text-white transition-all duration-300" />
-        </a>
+        </a> */}
         <a
           href="https://wa.me/+8801731177283"
           target="_blank"
@@ -33,14 +33,14 @@ const Footer = () => {
         >
           <FaWhatsapp className="text-black group-hover:text-white transition-all duration-300" />
         </a>
-        <a
+        {/* <a
           href="https://www.facebook.com/people/ElectroSys-Engineering/61560350367695/"
           target="_blank"
           rel="noopener noreferrer"
           className="p-3 rounded-full cursor-pointer bg-white group hover:bg-primary transition-all duration-300"
         >
           <FaFacebook className="text-black group-hover:text-white transition-all duration-300" />
-        </a>
+        </a> */}
         <a
           href="https://www.youtube.com/"
           target="_blank"
@@ -52,8 +52,8 @@ const Footer = () => {
       </div>
     </div>
     
-    <div className="space-y-6 text-center">
-      <h2 className="text-white text-2xl font-bold">Company</h2>
+    <div className="space-y-4 text-center">
+      {/* <h2 className="text-white text-2xl font-bold">Company</h2>
       <div className="space-y-1">
         <div className="grid gap-1">
           <Link
@@ -81,7 +81,7 @@ const Footer = () => {
             Contact Us
           </Link>
         </div>
-      </div>
+      </div> */}
     </div>
 
     <div className="space-y-6">
