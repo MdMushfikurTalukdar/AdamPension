@@ -59,7 +59,7 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost}) => {
     if (userInput === verificationCode.toString()) {
         setFlag(true); 
         setSnackbar({ open: true, message: "Accepted!", severity: "success" });
-        window.location.reload();
+        
     } 
     else {
         setSnackbar({ open: true, message: "Not Match!", severity: "error" });
@@ -105,6 +105,7 @@ const handleSubmit = async (event) => {
                 setEmail("");
                 setPhone("");
                 console.log("Booking saved successfully:", data);
+                window.location.reload();
             } else {
                 const errorData = await response.json();
                 setErrorMessage("Failed to save booking. Please try again.");
@@ -117,8 +118,6 @@ const handleSubmit = async (event) => {
             setIsLoading(false); 
         }
     } else {
-        // If verification failed, show an error
-        setSnackbar({ open: true, message: "Verification failed! Please try again.", severity: "error" });
         setIsLoading(false); 
     }
 };
@@ -198,6 +197,7 @@ const handleSubmit = async (event) => {
             fullWidth
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
+            style={{marginTop:'5px'}}
           />
         </DialogContent>
         <DialogActions>
