@@ -9,8 +9,9 @@ import Home from "./pages/Home.js";
 import Room from "./pages/RoomBook.js";
 import SignUp from "./pages/SignUpForm.js";
 import AdminPanel from "./pages/AdminPanel.js";
-import Try from "./pages/Try.js";
 import EmailForm from "./pages/EmailForm.js";
+import AboutUs from "./pages/AboutUs.js";
+import ContactUs from "./pages/ContactUs.js";
 
 
 function App() {
@@ -22,8 +23,9 @@ function App() {
             <Route path="/room-book" element={<Room/>} />
             <Route path="/sign" element={<SignUp/>} />
             <Route path="/admin" element={<AdminPanel/>} />
-            <Route path="/try" element={<Try/>} />
             <Route path="/email" element={<EmailForm/>} />
+            <Route path="/about" element={<AboutUs/>} />
+            <Route path="/contact" element={<ContactUs/>} />
             
           </Routes>
         </Router>
