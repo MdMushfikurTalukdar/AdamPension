@@ -16,40 +16,7 @@ const Footer = () => {
       <p className="leading-7 text-white text-justify -mt-5">
       Das Zimmer befindet sich in einer ruhigen Lage in Chemnitz. Verkehrsanbindung ist sowohl mit öffentlichen Verkehrsmitteln möglich als auch schnell mit dem Auto in die Stadt. Parkmöglichkeit ist kostenlos hier und stets frei vor der Unterkunft.
       </p>
-      <div className="flex gap-3 -mt-5">
-        {/* <a
-          href="https://www.linkedin.com/company/electrosys-engineering/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-3 rounded-full cursor-pointer bg-white group hover:bg-primary transition-all duration-300"
-        >
-          <FaLinkedin className="text-black group-hover:text-white transition-all duration-300" />
-        </a> */}
-        <a
-          href="https://wa.me/+8801731177283"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-3 rounded-full cursor-pointer bg-white group hover:bg-primary transition-all duration-300"
-        >
-          <FaWhatsapp className="text-black group-hover:text-white transition-all duration-300" />
-        </a>
-        {/* <a
-          href="https://www.facebook.com/people/ElectroSys-Engineering/61560350367695/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-3 rounded-full cursor-pointer bg-white group hover:bg-primary transition-all duration-300"
-        >
-          <FaFacebook className="text-black group-hover:text-white transition-all duration-300" />
-        </a> */}
-        <a
-          href="https://www.youtube.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-3 rounded-full cursor-pointer bg-white group hover:bg-primary transition-all duration-300"
-        >
-          <FaYoutube className="text-black group-hover:text-white transition-all duration-300" />
-        </a>
-      </div>
+      
     </div>
     
     <div className="space-y-4 text-center">
@@ -108,7 +75,29 @@ const Footer = () => {
           <span className="text-[#E7E7E7]">+49 17663265933 Here .</span>
         </div>
       </div>
+      
+
+
+      <div className="flex gap-5 -mt-5">
+        <a
+          href="https://wa.me/+8801731177283"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-3 rounded-full cursor-pointer bg-white group hover:bg-primary transition-all duration-300"
+        >
+          <FaWhatsapp className="text-black group-hover:text-white transition-all duration-300" />
+        </a>
+        <a
+          href="https://www.youtube.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-3 rounded-full cursor-pointer bg-white group hover:bg-primary transition-all duration-300"
+        >
+          <FaYoutube className="text-black group-hover:text-white transition-all duration-300" />
+        </a>
+      </div>
     </div>
+    
   </div>
   <hr className="max-w-screen-xl mx-auto mt-5" />
   <div className="mt-6 space-y-2">

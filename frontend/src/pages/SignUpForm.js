@@ -31,14 +31,14 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost}) => {
     try {
       const code = generateVerificationCode();
     //   console.log(code);
-      const response = await axios.post('http://none2.pythonanywhere.com/api/api/email/verify/', {
+      const response = await axios.post('https://none2.pythonanywhere.com/api/api/email/verify/', {
         email: email.trim(),
         code: code,
       });
 
       setMessage(response.data.message);
     } catch (err) {
-      setError(err.response?.data?.error || 'Failed to send verification email.');
+      setError(err.response?.data?.error);
     }
   };
 

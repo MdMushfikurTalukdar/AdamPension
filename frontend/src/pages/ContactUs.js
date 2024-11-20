@@ -101,7 +101,7 @@ const ContactUs = () => {
 
         {/* Action Button */}
         <Box textAlign="center" mt={5}>
-          <Button
+          {/* <Button
             variant="contained"
             color="primary"
             sx={{
@@ -115,7 +115,7 @@ const ContactUs = () => {
             }}
           >
             Nachricht Senden
-          </Button>
+          </Button> */}
         </Box>
       </Paper>
     </Box>
