@@ -105,7 +105,6 @@ const handleSubmit = async (event) => {
                 setEmail("");
                 setPhone("");
                 console.log("Booking saved successfully:", data);
-                window.location.reload();
             } else {
                 const errorData = await response.json();
                 setErrorMessage("Failed to save booking. Please try again.");
