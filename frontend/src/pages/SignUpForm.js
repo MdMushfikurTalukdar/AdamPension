@@ -214,9 +214,40 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
     }
     setDialogOpen(false); // Close the dialog regardless of success or failure
   };
+  //api/email/successfull-message
+  const successfullMessage = async () => {
+    setError("");
+    setMessage("");
+
+    try {
+      const code = generateVerificationCode();
+      const response = await axios.post(
+        "https://none2.pythonanywhere.com/api/api/email/successfull-message",
+        {
+          email: email.trim(),
+          code: code,
+        }
+      );
+
+      setEmail("");
+      setMessage(response.data.message);
+    } catch (err) {
+      setError(err.response?.data?.error);
+    }
+  };
 
   const submitBooking = async () => {
-    const nights = countDays(startDate, endDate);
+    console.log(endDate);
+    if(endDate===null){
+      endDate = startDate;
+    }
+    console.log(endDate);
+    let nights = countDays(startDate, endDate);
+    console.log(nights);
+    if(nights===0){
+      nights = 1;
+    }
+    console.log(nights);
     const bookingData = {
       first_name: firstName || null,
       last_name: lastName || null,
@@ -245,7 +276,7 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
         const data = await response.json();
         setFirstName("");
         setLastName("");
-        setEmail("");
+        // setEmail("");
         setPhone("");
         setSnackbar({
           open: true,
@@ -253,6 +284,8 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
           severity: "success",
         });
         console.log("Booking saved successfully:", data);
+
+        successfullMessage();
 
         // Navigate to /room-book page
         navigate("/room-book");
