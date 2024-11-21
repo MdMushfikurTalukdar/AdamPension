@@ -107,7 +107,7 @@ const Footer = () => {
     <p className="text-center text-[#E7E7E7]">
       Developed by{" "}
       <a
-        href="https://www.linkedin.com/in/jisan027/"
+        href="https://www.linkedin.com/in/mdyasirarafat030/"
         target="_blank"
         rel="noopener noreferrer"
         className="text-primary"
