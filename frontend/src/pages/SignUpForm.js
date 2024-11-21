@@ -1,149 +1,14 @@
 import React, { useState } from "react";
 import { Grid, TextField, Button, Typography, Box, Dialog, DialogActions, DialogContent, DialogTitle, Snackbar, Alert, } from '@mui/material';
 import axios from 'axios';
-
-// const SignUpForm = ({ startDate, endDate, roomName, perDayCost}) => {
-//   const [firstName, setFirstName] = useState("");
-//   const [lastName, setLastName] = useState("");
-//   const [email, setEmail] = useState("");
-//   const [phone, setPhone] = useState("");
-//   const [isLoading, setIsLoading] = useState(false);
-//   const [errorMessage, setErrorMessage] = useState("");
-//   const [message, setMessage] = useState('');
-//   const [error, setError] = useState('');
-//   const [verificationCode, setVerificationCode] = useState('');
-//   const [dialogOpen, setDialogOpen] = useState(false);
-//   const [snackbar, setSnackbar] = useState({ open: false, message: "", severity: "" });
-//   const [userInput, setUserInput] = useState("");
-//   const [flag, setFlag] = useState(false);
-
-
-//   const generateVerificationCode = () => {
-//     const code = Math.floor(100000 + Math.random() * 900000); 
-//     setVerificationCode(code);
-//     return code;
-//   };
-
-//   const sendVerificationEmail = async () => {
-//     setError('');
-//     setMessage('');
-
-//     try {
-//       const code = generateVerificationCode();
-//     //   console.log(code);
-//       const response = await axios.post('https://none2.pythonanywhere.com/api/api/email/verify/', {
-//         email: email.trim(),
-//         code: code,
-//       });
-
-//       setMessage(response.data.message);
-//     } catch (err) {
-//       setError(err.response?.data?.error);
-//     }
-//   };
-
-//   const countDays = (startDate, endDate) => {
-//     const start = new Date(startDate);
-//     const end = new Date(endDate);
-//     const timeDifference = end - start;
-//     const days = timeDifference / (1000 * 3600 * 24);
-//     return days;
-//   };
-
-//   const handelVerification = () => {
-//     setDialogOpen(true);
-//   }
-
-
-  
-// const handleVerify = () => {
-//   if (userInput === verificationCode.toString()) {
-//       setFlag(true);
-//       setSnackbar({ open: true, message: "Verification Successful!", severity: "success" });
-
-//       // Trigger booking submission after successful verification
-//       submitBooking(); // Call this function after setting the flag
-//   } else {
-//       setSnackbar({ open: true, message: "Verification Failed! Code does not match.", severity: "error" });
-//   }
-//   setDialogOpen(false); // Close the dialog regardless of success or failure
-// };
-
-// const submitBooking = async () => {
-
-//   const nights = countDays(startDate, endDate);
-//   const bookingData = {
-//       first_name: firstName || null,
-//       last_name: lastName || null,
-//       email: email || null,
-//       phone: phone || null,
-//       start_date: startDate.toISOString().split("T")[0],
-//       end_date: endDate.toISOString().split("T")[0],
-//       room_name: roomName,
-//       night_count: nights,
-//       total_cost: nights * perDayCost,
-//   };
-
-//   try {
-//       const response = await fetch("https://none2.pythonanywhere.com/api/api/bookings/", {
-//           method: "POST",
-//           headers: {
-//               "Content-Type": "application/json",
-//           },
-//           body: JSON.stringify(bookingData),
-//       });
-
-//       if (response.ok) {
-//           const data = await response.json();
-//           // Clear form fields on success
-//           setFirstName("");
-//           setLastName("");
-//           setEmail("");
-//           setPhone("");
-          
-//           setSnackbar({
-//               open: true,
-//               message: "Booking saved successfully!",
-//               severity: "success",
-//           });
-//           console.log("Booking saved successfully:", data);
-//       } else {
-//           const errorData = await response.json();
-//           setSnackbar({
-//               open: true,
-//               message: errorData.message || "Failed to save booking. Please try again.",
-//               severity: "error",
-//           });
-//           console.error("Error saving booking:", errorData);
-//       }
-//   } catch (error) {
-//       setSnackbar({
-//           open: true,
-//           message: "Network error. Please check your connection.",
-//           severity: "error",
-//       });
-//       console.error("Network or server error:", error);
-//   } finally {
-//       setIsLoading(false);
-//   }
-// };
-
-// const handleSubmit = async (event) => {
-//   event.preventDefault();
-//   setIsLoading(true);
-//   setErrorMessage("");
-
-//   // Send the verification email and wait for the user to verify
-//   await sendVerificationEmail();
-//   setDialogOpen(true);
-// };
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom"; 
 
 const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [region, setRegion] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [message, setMessage] = useState("");
@@ -158,7 +23,7 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
   const [userInput, setUserInput] = useState("");
   const [flag, setFlag] = useState(false);
 
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate(); 
 
   const generateVerificationCode = () => {
     const code = Math.floor(100000 + Math.random() * 900000);
@@ -212,7 +77,7 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
         severity: "error",
       });
     }
-    setDialogOpen(false); // Close the dialog regardless of success or failure
+    setDialogOpen(false); 
   };
   //api/email/successfull-message
   const successfullMessage = async () => {
@@ -367,6 +232,17 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
               type="tel"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
+              variant="outlined"
+              fullWidth
+              required
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Land/Region"
+              type="tel"
+              value={region}
+              onChange={(e) => setRegion(e.target.value)}
               variant="outlined"
               fullWidth
               required

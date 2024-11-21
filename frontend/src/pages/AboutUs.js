@@ -41,7 +41,7 @@ const AboutUs = () => {
           marginBottom: '3rem',
         }}
       >
-        Welcome to <strong>Your Site Name</strong>, where hospitality meets elegance. Our mission is to offer 
+        Welcome to <strong>Adam’s Pension</strong>, where hospitality meets elegance. Our mission is to offer 
         exceptional stays tailored to your comfort and needs. Whether you're visiting for business or leisure, 
         we ensure a memorable experience with modern amenities and unparalleled service.
       </Typography>

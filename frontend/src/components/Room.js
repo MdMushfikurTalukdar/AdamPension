@@ -58,17 +58,17 @@ export default function Room() {
       price: "40",
       href: "#",
     },
-    // {
-    //   name: "Double Bed Room 2",
-    //   images: [
-    //     "https://i.ibb.co.com/DQ3DRhy/IMG-20241112-WA0010.jpg"
-    //   ],
-    //   capacity: "2 Personen",
-    //   size: "20m²",
-    //   view: "City",
-    //   price: "45",
-    //   href: "#",
-    // },
+    {
+      name: "Underdevelopment",
+      images: [
+        "https://i.ibb.co.com/cCNKVzm/IMG-20241112-WA0010.png"
+      ],
+      capacity: "--",
+      size: "--",
+      view: "--",
+      price: "0",
+      href: "#",
+    },
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
