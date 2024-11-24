@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Grid, TextField, Button, Typography, Box, Dialog, DialogActions, DialogContent, DialogTitle, Snackbar, Alert, } from '@mui/material';
+import { Grid, TextField, Button, Typography, Box, Dialog, DialogActions, DialogContent, DialogTitle, Snackbar, Alert, InputLabel, Select, MenuItem, FormControl } from '@mui/material';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom"; 
-import { loadStripe } from "@stripe/stripe-js";
+import { useNavigate } from "react-router-dom";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
 
@@ -30,6 +29,18 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
   const [flag, setFlag] = useState(false);
 
   const navigate = useNavigate(); 
+
+  const europeanCountries = [
+    "Albania", "Andorra", "Armenia", "Austria", "Azerbaijan", "Belarus", 
+    "Belgium", "Bosnia and Herzegovina", "Bulgaria", "Croatia", "Cyprus", 
+    "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Georgia", 
+    "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kazakhstan", 
+    "Kosovo", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", 
+    "Moldova", "Monaco", "Montenegro", "Netherlands", "North Macedonia", "Norway", 
+    "Poland", "Portugal", "Romania", "San Marino", "Serbia", "Slovakia", 
+    "Slovenia", "Spain", "Sweden", "Switzerland", "Turkey", "Ukraine", 
+    "United Kingdom", "Vatican City"
+  ];
 
 
   const generateVerificationCode = () => {
@@ -249,7 +260,7 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
   if(night===0){
     night = 1;
   }
-  
+
   return (
     <Box sx={{ maxWidth: 400, margin: 'auto', padding: 3, boxShadow: 3, borderRadius: 2 }}>
       <Typography variant="h5" align="center" gutterBottom>
@@ -302,15 +313,20 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
             />
           </Grid>
           <Grid item xs={12}>
-            <TextField
-              label="Land/Region"
-              type="tel"
-              value={region}
-              onChange={(e) => setRegion(e.target.value)}
-              variant="outlined"
-              fullWidth
-              required
-            />
+            <FormControl variant="outlined" fullWidth required>
+              <InputLabel>Land/Region</InputLabel>
+              <Select
+                value={region}
+                onChange={(e) => setRegion(e.target.value)}
+                label="Land/Region"
+              >
+                {europeanCountries.map((country) => (
+                  <MenuItem key={country} value={country}>
+                    {country}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           </Grid>
           <Grid item xs={12}>
             <Button
