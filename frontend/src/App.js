@@ -12,12 +12,7 @@ import AdminPanel from "./pages/AdminPanel.js";
 import EmailForm from "./pages/EmailForm.js";
 import AboutUs from "./pages/AboutUs.js";
 import ContactUs from "./pages/ContactUs.js";
-import CheckoutForm from "./pages/CheckoutForm.js";
 
-// import { Elements } from "@stripe/react-stripe-js";
-// import { loadStripe } from "@stripe/stripe-js";
-
-// const stripePromise = loadStripe("your-publishable-key-here");
 
 function App() {
   return (
@@ -31,9 +26,6 @@ function App() {
             <Route path="/email" element={<EmailForm/>} />
             <Route path="/about" element={<AboutUs/>} />
             <Route path="/contact" element={<ContactUs/>} />
-            {/* <Elements stripe={stripePromise}>
-              <Route path="/check" element={<CheckoutForm/>} />
-            </Elements> */}
 
             
           </Routes>

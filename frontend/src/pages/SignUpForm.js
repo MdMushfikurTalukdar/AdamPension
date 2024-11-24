@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Grid, TextField, Button, Typography, Box, Dialog, DialogActions, DialogContent, DialogTitle, Snackbar, Alert, } from '@mui/material';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom"; 
+import { loadStripe } from "@stripe/stripe-js";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+
 
 const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
   const [firstName, setFirstName] = useState("");
@@ -15,6 +18,9 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
   const [error, setError] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
   const [dialogOpen, setDialogOpen] = useState(false);
+  const stripe = useStripe();
+  const elements = useElements();
+  const [open, setOpen] = useState(false);
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: "",
@@ -24,6 +30,7 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
   const [flag, setFlag] = useState(false);
 
   const navigate = useNavigate(); 
+
 
   const generateVerificationCode = () => {
     const code = Math.floor(100000 + Math.random() * 900000);
@@ -68,8 +75,9 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
         severity: "success",
       });
 
+      setOpen(true);
       // Trigger booking submission after successful verification
-      submitBooking(); // Call this function after setting the flag
+      //submitBooking(); // Call this function after setting the flag
     } else {
       setSnackbar({
         open: true,
@@ -102,17 +110,13 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
   };
 
   const submitBooking = async () => {
-    console.log(endDate);
     if(endDate===null){
       endDate = startDate;
     }
-    console.log(endDate);
     let nights = countDays(startDate, endDate);
-    console.log(nights);
     if(nights===0){
       nights = 1;
     }
-    console.log(nights);
     const bookingData = {
       first_name: firstName || null,
       last_name: lastName || null,
@@ -153,7 +157,7 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
         successfullMessage();
 
         // Navigate to /room-book page
-        navigate("/room-book");
+        //navigate("/room-book");
       } else {
         const errorData = await response.json();
         setSnackbar({
@@ -185,6 +189,66 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
     await sendVerificationEmail();
     setDialogOpen(true);
   };
+
+  const handlePayment = async () => {
+    if (endDate === null) {
+      endDate = startDate;
+    }
+    let nights = countDays(startDate, endDate);
+    if (nights === 0) {
+      nights = 1;
+    }
+  
+    if (!stripe || !elements) return;
+  
+    const cardElement = elements.getElement(CardElement);
+  
+    try {
+      const response = await axios.post("https://none2.pythonanywhere.com/api/api/create-payment-intent/", {
+        amount: nights * perDayCost * 100, 
+        currency: "eur",
+      });
+  
+      const { client_secret } = response.data;
+  
+      const result = await stripe.confirmCardPayment(client_secret, {
+        payment_method: {
+          card: cardElement,
+        },
+      });
+  
+      if (result.error) {
+        setSnackbar({
+          open: true,
+          message: result.error.message,
+          severity: "error",
+        });
+      } else if (result.paymentIntent.status === "succeeded") {
+        setSnackbar({
+          open: true,
+          message: "Payment successful!",
+          severity: "success",
+        });
+        setOpen(false); 
+        submitBooking();
+      }
+    } catch (error) {
+      setSnackbar({
+        open: true,
+        message: "Payment failed. Please try again.",
+        severity: "error",
+      });
+      console.error(error);
+    }
+  };
+  
+  if(endDate===null){
+    endDate = startDate;
+  }
+  let night = countDays(startDate, endDate);
+  if(night===0){
+    night = 1;
+  }
   
   return (
     <Box sx={{ maxWidth: 400, margin: 'auto', padding: 3, boxShadow: 3, borderRadius: 2 }}>
@@ -282,6 +346,29 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
           </Button>
         </DialogActions>
       </Dialog>
+     
+
+      {/* Payment Dialog */}
+      
+      <Dialog open={open} onClose={() => setOpen(false)} maxWidth="sm" fullWidth>
+        <DialogTitle>Complete Payment</DialogTitle>
+        <DialogContent>
+          <div>
+            <CardElement options={{ hidePostalCode: true }} />
+          </div>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setOpen(false)} color="secondary">
+            Cancel
+          </Button>
+          <Button onClick={handlePayment} color="primary" disabled={!stripe}>
+            Pay € {night * perDayCost}
+          </Button>
+        </DialogActions>
+      </Dialog>
+      
+      
+
 
       {/* Snackbar for Feedback */}
       <Snackbar

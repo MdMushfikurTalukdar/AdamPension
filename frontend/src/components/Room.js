@@ -13,6 +13,9 @@ import SignUpForm from "../pages/SignUpForm";
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import "./calender.css";
 import axios from 'axios';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+const stripePromise = loadStripe('pk_test_51QOF31KcFrmaTL9tNrfYQQqeAZHhq1N55DgBDiZ5VkXFZYoZBruUOVjkaKQjam9OXRW38X20pcIIUkfLVMfL4Xyy00iBccExfp'); //your-publishable-key-here
 
 export default function Room() {
   const rooms = [
@@ -335,7 +338,9 @@ const fetchBookedDates = async (roomName) => {
                           <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
                             {/* <DialogTitle></DialogTitle> */}
                             <DialogContent>
-                              <SignUpForm startDate={startDate} endDate={endDate} roomName={rooms[currentRoomIndex].name} perDayCost={rooms[currentRoomIndex].price} />
+                              <Elements stripe={stripePromise}>
+                                <SignUpForm startDate={startDate} endDate={endDate} roomName={rooms[currentRoomIndex].name} perDayCost={rooms[currentRoomIndex].price} />
+                              </Elements>
                             </DialogContent>
                           </Dialog>  
                     </div>
