@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Grid, TextField, Button, Typography, Box, Dialog, DialogActions, DialogContent, DialogTitle, Snackbar, Alert, InputLabel, Select, MenuItem, FormControl } from '@mui/material';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
   const [firstName, setFirstName] = useState("");
@@ -12,6 +13,7 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
   const [phone, setPhone] = useState("");
   const [region, setRegion] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -27,6 +29,47 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
   });
   const [userInput, setUserInput] = useState("");
   const [flag, setFlag] = useState(false);
+  const [amount, setAmount] = useState(0);
+
+  const [paymentDashboard, setPaymentDashboard] = useState(false);
+  const [paypal, setPaypal] = useState(false);
+  const paypalSubmit = async () => {
+    if (endDate === null) {
+      endDate = startDate;
+    }
+    let nights = countDays(startDate, endDate);
+    if (nights === 0) {
+      nights = 1;
+    }
+
+    if (!email || !amount) {
+      alert("Please provide email and amount!");
+      return;
+    }
+    setLoading(true);
+
+    try {
+      // Call backend API to create the payment
+      const response = await axios.post('https://none2.pythonanywhere.com/api/api/create-payment-paypal/', {
+        email,
+        amount,
+      });
+
+      if (response.data.approval_url) {
+        // Redirect to PayPal approval URL
+        window.location.href = response.data.approval_url;
+        setPaypal(false); 
+        submitBooking();
+      } else {
+        alert("Payment creation failed");
+      }
+    } catch (error) {
+      console.error('Error creating payment:', error);
+      alert('There was an error with the payment process.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const navigate = useNavigate(); 
 
@@ -78,6 +121,7 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
   };
 
   const handleVerify = () => {
+    setAmount(night * perDayCost);
     if (userInput === verificationCode.toString()) {
       setFlag(true);
       setSnackbar({
@@ -86,7 +130,8 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
         severity: "success",
       });
 
-      setOpen(true);
+      setPaymentDashboard(true);
+      // setOpen(true);
       // Trigger booking submission after successful verification
       //submitBooking(); // Call this function after setting the flag
     } else {
@@ -362,9 +407,41 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
           </Button>
         </DialogActions>
       </Dialog>
-     
 
-      {/* Payment Dialog */}
+      {/* payment dashboard */}
+      <Dialog open={paymentDashboard} onClose={() => setPaymentDashboard(false)} maxWidth="sm" fullWidth>
+        <DialogTitle>Payment Method</DialogTitle>
+        <DialogContent>
+          {/* <div>
+            <Button onClick={() => setOpen(true)} variant="contained" >
+                Stripe
+            </Button>
+            <Button variant="contained" >
+                Paypal
+            </Button>
+          </div> */}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              p: 3,
+              gap: 2,
+            }}
+          >
+            <Button  onClick={() => setOpen(true)} variant="contained">Stripe</Button>
+            <Button onClick={() => setPaypal(true)} variant="contained">Paypal</Button>
+          </Box>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setPaymentDashboard(false)} >Cancel</Button>
+        </DialogActions>
+      </Dialog>
+
+
+
+      {/* Payment Dialog stripe */}
       
       <Dialog open={open} onClose={() => setOpen(false)} maxWidth="sm" fullWidth>
         <DialogTitle>Complete Payment</DialogTitle>
@@ -382,9 +459,37 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
           </Button>
         </DialogActions>
       </Dialog>
-      
+
+
       
 
+        {/* Popup for PayPal Payment */}
+        <Dialog open={paypal} onClose={() => setPaypal(false)}>
+          <DialogTitle>Enter Payment Details</DialogTitle>
+          <DialogContent>
+            <TextField
+              label="Recipient Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              label="Amount"
+              value={amount}
+              fullWidth
+              margin="normal"
+              type="number"
+              InputProps={{
+                readOnly: true,  // Makes the field read-only
+              }}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setPaypal(false)} color="primary">Cancel</Button>
+            <Button onClick={paypalSubmit} color="primary">Submit</Button>
+          </DialogActions>
+        </Dialog>
 
       {/* Snackbar for Feedback */}
       <Snackbar
