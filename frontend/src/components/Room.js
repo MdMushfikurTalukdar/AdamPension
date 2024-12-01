@@ -120,13 +120,13 @@ useEffect(() => {
   };
   
 const fetchBookedDates = async (roomName) => {
-  console.log(roomName);
+  // console.log(roomName);
   try {
     // Fetch data from the API
     const response = await axios.get(`https://none2.pythonanywhere.com/api/api/bookings/${roomName}/`);
     
     // Log the full response for debugging
-    console.log("API Response:", response);
+    // console.log("API Response:", response);
 
     // Assuming the bookings are in response.data.bookings
     const bookings = response.data.bookings || []; // Adjust this based on actual structure
@@ -141,7 +141,7 @@ const fetchBookedDates = async (roomName) => {
 
     // Set booked dates to state
     setBookedDates(datesInRange);
-    console.log("Dates in Range:", datesInRange);
+    // console.log("Dates in Range:", datesInRange);
   } catch (error) {
     console.error("Error fetching booked dates", error);
   }

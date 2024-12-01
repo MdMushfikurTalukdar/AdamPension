@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Grid, TextField, Button, Typography, Box, Dialog, DialogActions, DialogContent, DialogTitle, Snackbar, Alert, InputLabel, Select, MenuItem, FormControl } from '@mui/material';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
 
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
@@ -28,7 +27,6 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
     severity: "",
   });
   const [userInput, setUserInput] = useState("");
-  const [flag, setFlag] = useState(false);
   const [amount, setAmount] = useState(0);
 
   const [paymentDashboard, setPaymentDashboard] = useState(false);
@@ -58,8 +56,6 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
       if (response.data.approval_url) {
         // Redirect to PayPal approval URL
         window.location.href = response.data.approval_url;
-        setPaypal(false); 
-        submitBooking();
       } else {
         alert("Payment creation failed");
       }
@@ -70,8 +66,6 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
       setLoading(false);
     }
   };
-
-  const navigate = useNavigate(); 
 
   const europeanCountries = [
     "Albania", "Andorra", "Armenia", "Austria", "Azerbaijan", "Belarus", 
@@ -123,7 +117,7 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
   const handleVerify = () => {
     setAmount(night * perDayCost);
     if (userInput === verificationCode.toString()) {
-      setFlag(true);
+      // setFlag(true);
       setSnackbar({
         open: true,
         message: "Verification Successful!",
@@ -490,6 +484,41 @@ const SignUpForm = ({ startDate, endDate, roomName, perDayCost }) => {
             <Button onClick={paypalSubmit} color="primary">Submit</Button>
           </DialogActions>
         </Dialog>
+
+        {/* PayPal Script Provider */}
+      <PayPalScriptProvider
+        options={{
+          "client-id": "YOUR_PAYPAL_CLIENT_ID",  // Use your PayPal Client ID
+          "currency": "USD", // Set the currency if needed
+        }}
+      >
+        {/* Render PayPal Buttons for Payment */}
+        <PayPalButtons
+          style={{ layout: 'vertical' }}
+          createOrder={(data, actions) => {
+            return actions.order.create({
+              purchase_units: [
+                {
+                  amount: {
+                    value: amount,  // Dynamic amount from the state
+                  },
+                },
+              ],
+            });
+          }}
+          onApprove={(data, actions) => {
+            return actions.order.capture().then((details) => {
+              alert("Payment Successful!"); // You can handle success here
+              setPaypal(false);  // Close the popup after payment
+              submitBooking();
+            });
+          }}
+          onError={(err) => {
+            console.error("PayPal error", err);
+            alert("An error occurred during the payment process.");
+          }}
+        />
+      </PayPalScriptProvider>
 
       {/* Snackbar for Feedback */}
       <Snackbar
