@@ -53,7 +53,7 @@
 ### Frontend Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/AdamPension.git
+   git clone https://github.com/MdMushfikurTalukdar/AdamPension.git
 2. Navigate to the frontend directory:
   cd AdamPension/frontend
 3. Install dependencies:
@@ -105,7 +105,10 @@
 
 ## Folder Structure
 
-AdamPension/ ├── frontend/ # React.js application ├── backend/ # Django backend ├── README.md # Project documentation
+AdamPension/ 
+├── frontend/ # React.js application 
+├── backend/ # Django backend 
+├── README.md # Project documentation
 
 ---
 
