@@ -106,9 +106,9 @@
 ## Folder Structure
 
 AdamPension/ <br>
-├── frontend/ # React.js application <br>
-├── backend/ # Django backend <br>
-├── README.md # Project documentation
+├── frontend/   `React.js application` <br>
+├── backend/    `Django backend` <br>
+├── README.md   `Project documentation`
 
 ---
 
@@ -133,5 +133,5 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Contact
 
 For any inquiries, please contact:  
-**Email:** mithutalukdar09@gmail.com  
-**GitHub:** [MdMushfikurTalukdar](https://github.com/MdMushfikurTalukdar)
+**Email:**    mithutalukdar09@gmail.com  
+**GitHub:**   [MdMushfikurTalukdar](https://github.com/MdMushfikurTalukdar)
