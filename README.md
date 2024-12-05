@@ -59,7 +59,9 @@
 ## Folder Structure
 AdamPension/
 ├── frontend/     # React.js application
+
 ├── backend/      # Django backend
+
 ├── README.md     # Project documentation
 
 
@@ -67,4 +69,5 @@ AdamPension/
 For any inquiries, please contact:
 
 **Email:** mithutalukdar09@gmail.com
+
 **GitHub:** MdMushfikurTalukdar
