@@ -105,9 +105,9 @@
 
 ## Folder Structure
 
-AdamPension/ 
-├── frontend/ # React.js application 
-├── backend/ # Django backend 
+AdamPension/ <br>
+├── frontend/ # React.js application <br>
+├── backend/ # Django backend <br>
 ├── README.md # Project documentation
 
 ---
